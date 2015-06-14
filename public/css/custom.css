@@ -1,0 +1,21 @@
+.fill { 
+    height: 100vh;
+}
+.stage{ 
+    min-height: 40%;
+    height: 40%;
+}
+#im-stage{ 
+   display: block;
+   max-width: 100%;
+   height: 40vh;
+}
+
+.hub{ 
+    min-height: 30%;
+    height: 30%;
+}
+
+.controls { 
+    height: 30%;
+}
