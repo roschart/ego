@@ -3,6 +3,7 @@ var ScreenComponent=React.createClass({
 return (
 	<div className="container-fluid fill">
 		<StageComponent />
+		<StatComponent />
 		<HubComponent/>
 		<ActionsComponent/>
 	</div>
@@ -16,6 +17,21 @@ var StageComponent=React.createClass({
 		<div className="row stage">
 			<div className="col-xs-12">
 				<img id="im-stage" src="img/image1.jpg" />
+			</div>
+		</div>
+		);		
+	},
+});
+
+var StatComponent=React.createClass({
+	render:function(){
+		return (
+		<div className="row stat">
+			<div className="col-xs-12">
+				<span>
+					Vida:<strong>20</strong>
+					Vida:<strong>10</strong>
+				</span>
 			</div>
 		</div>
 		);		
