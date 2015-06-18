@@ -1,9 +1,23 @@
+function getFightStoreState(){
+	return {data:FightStore.getState()};
+}
 var ScreenComponent=React.createClass({
+	getInitialState:function(){
+	console.log("INIT IIIIIIIIIIIIIIIIIIIIIIIIII");
+			return (getFightStoreState());
+	},
+	componentDidMount:function(){
+		console.log("DID MOUNT MMMMMMMMMMMMMMMMMMM");
+		setTimeout(function(){FightStore.attack();},1000);
+		FightStore.onChange=(function(){
+			this.setState(getFightStoreState());
+		}).bind(this);	
+	},	
 	render:function(){
 return (
 	<div className="container-fluid fill">
 		<StageComponent />
-		<StatComponent />
+		<StatComponent data={this.state.data}/>
 		<HubComponent/>
 		<ActionsComponent/>
 	</div>
@@ -29,8 +43,8 @@ var StatComponent=React.createClass({
 		<div className="row stat">
 			<div className="col-xs-12">
 				<span>
-					Vida:<strong>20</strong>
-					Vida:<strong>10</strong>
+					Vida:<strong>{this.props.data.player.live}</strong>
+					Vida:<strong>{this.props.data.monster.live}</strong>
 				</span>
 			</div>
 		</div>
@@ -84,6 +98,7 @@ var ActionsComponent=React.createClass({
 		);		
 	},
 });
+
 
 React.render(
 <ScreenComponent />, document.getElementById("screen")

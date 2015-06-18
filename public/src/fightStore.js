@@ -28,11 +28,18 @@ function hitPoints(attaquer,defender){
 		return ((damage>defender.live)? defender.live:damage);
 }
 
-//Test
-console.log(_player,_monster);
-console.log(hitPoints(_player,_monster));
-attack(_player,_monster);
-console.log(_player,_monster);
+var FightStore={
+	getState:function(){
+		return {player:_player,monster:_monster}
+	},
+	attack:function(){
+		attack(_player,_monster);
+		if(this.onChange){
+			console.log("Cambiando que es gerundio");
+			this.onChange();
+		}
+	}
+}
 
 
 
