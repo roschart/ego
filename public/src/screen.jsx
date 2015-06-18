@@ -1,14 +1,16 @@
 function getFightStoreState(){
 	return {data:FightStore.getState()};
 }
+
 var ScreenComponent=React.createClass({
 	getInitialState:function(){
-	console.log("INIT IIIIIIIIIIIIIIIIIIIIIIIIII");
 			return (getFightStoreState());
 	},
+	attackAction:function(){
+		//TODO:Call to future dispatcher
+		FightStore.attack();
+	},
 	componentDidMount:function(){
-		console.log("DID MOUNT MMMMMMMMMMMMMMMMMMM");
-		setTimeout(function(){FightStore.attack();},1000);
 		FightStore.onChange=(function(){
 			this.setState(getFightStoreState());
 		}).bind(this);	
@@ -19,7 +21,7 @@ return (
 		<StageComponent />
 		<StatComponent data={this.state.data}/>
 		<HubComponent/>
-		<ActionsComponent/>
+		<ActionsComponent onAttact={this.attackAction}/>
 	</div>
 	);
 	}
@@ -74,7 +76,7 @@ var ActionsComponent=React.createClass({
 				<div className="container-fluid">
 					<div className="row">
 						<div className="col-xs-4">
-							<button type="button" className="btn-xs btn-primary">Atacar</button>
+							<button type="button" className="btn-xs btn-primary" onClick={this.props.onAttact}>Atacar</button>
 						</div>
 						<div className="col-xs-4">
 						</div>
