@@ -15,7 +15,6 @@ var _monster={
 
 function attack(attacker, defender){
 	if(isHit(attacker,defender)){
-		console.log(hitPoints(attacker,defender));
 		defender.live-=hitPoints(attacker, defender);		 	
 	 }
 	applyMalus(attacker);
@@ -35,7 +34,6 @@ function applyMalus(attacker){
 	var malus=5;
 	attacker.evasion=attacker.evasion>malus? attacker.evasion-malus:0;
 	attacker.attack=attacker.attack>malus? attacker.attack-malus:0;
-	console.log(attacker);
 }
 
 var FightStore={

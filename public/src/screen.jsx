@@ -6,10 +6,6 @@ var ScreenComponent=React.createClass({
 	getInitialState:function(){
 			return (getFightStoreState());
 	},
-	attackAction:function(){
-		//TODO:Call to future dispatcher
-		FightStore.attack();
-	},
 	componentDidMount:function(){
 		FightStore.onChange=(function(){
 			this.setState(getFightStoreState());
@@ -21,7 +17,7 @@ return (
 		<StageComponent />
 		<StatComponent data={this.state.data}/>
 		<HubComponent/>
-		<ActionsComponent onAttact={this.attackAction}/>
+		<ActionsComponent />
 	</div>
 	);
 	}
@@ -69,6 +65,10 @@ var HubComponent=React.createClass({
 
 
 var ActionsComponent=React.createClass({
+	attackAction:function(){
+		//TODO:Call to future dispatcher
+		FightStore.attack();
+	},
 	render:function(){
 		return (
 		<div className="row control">
@@ -76,7 +76,7 @@ var ActionsComponent=React.createClass({
 				<div className="container-fluid">
 					<div className="row">
 						<div className="col-xs-4">
-							<button type="button" className="btn-xs btn-primary" onClick={this.props.onAttact}>Atacar</button>
+							<button type="button" className="btn-xs btn-primary" onClick={this.attackAction}>Atacar</button>
 						</div>
 						<div className="col-xs-4">
 						</div>
