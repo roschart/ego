@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "grunt"
+    "start": "node_modules/.bin/grunt"
   },
   "engines": {
     "node": "0.12.2"
