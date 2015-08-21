@@ -1,11 +1,11 @@
 {
-  "name": "paborrar",
+  "name": "ego",
   "version": "1.0.0",
-  "description": "Prueba de livereload",
+  "description": "Game project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "grunt"
+    "start": "node_modules/.bin/grunt"
   },
   "engines": {
     "node": "0.12.2"
