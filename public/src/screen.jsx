@@ -9,8 +9,9 @@ var ScreenComponent=React.createClass({
 	componentDidMount:function(){
 		FightStore.onChange=(function(){
 			this.setState(getFightStoreState());
-		}).bind(this);	
-	},	
+			console.log(getFightStoreState().data.player);
+		}).bind(this);
+	},
 	render:function(){
 return (
 	<div className="container-fluid fill">
@@ -31,7 +32,7 @@ var StageComponent=React.createClass({
 				<img id="im-stage" src="img/image1.jpg" />
 			</div>
 		</div>
-		);		
+		);
 	},
 });
 
@@ -46,7 +47,7 @@ var StatComponent=React.createClass({
 				</span>
 			</div>
 		</div>
-		);		
+		);
 	},
 });
 
@@ -59,7 +60,7 @@ var HubComponent=React.createClass({
 				<span>Empieza la lucha</span>
 			</div>
 		</div>
-		);		
+		);
 	},
 });
 
@@ -68,6 +69,12 @@ var ActionsComponent=React.createClass({
 	attackAction:function(){
 		//TODO:Call to future dispatcher
 		FightStore.attack();
+	},
+	defendAction:function(){
+		FightStore.defend();
+	},
+	aimAction:function(){
+		FightStore.aim();
 	},
 	render:function(){
 		return (
@@ -81,12 +88,12 @@ var ActionsComponent=React.createClass({
 						<div className="col-xs-4">
 						</div>
 						<div className="col-xs-4">
-							<button type="button" className="btn-xs btn-primary">Esquivar</button>
+							<button type="button" className="btn-xs btn-primary" onClick={this.defendAction}>Esquivar</button>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-xs-4">
-							<button type="button" className="btn-xs btn-primary">Apuntar</button>
+							<button type="button" className="btn-xs btn-primary" onClick={this.aimAction}>Apuntar</button>
 						</div>
 						<div className="col-xs-4">
 						</div>
@@ -97,7 +104,7 @@ var ActionsComponent=React.createClass({
 				</div>
 			</div>
 		</div>
-		);		
+		);
 	},
 });
 
