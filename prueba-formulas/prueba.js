@@ -1,4 +1,4 @@
-var personaje={
+var host={
   vida:10,
   ataque:5,
   defensa:3
@@ -14,8 +14,8 @@ function atacar(a,d){
   d.vida=d.vida-a.ataque+d.defensa
 }
 
-function defender(a,d){
-  d.vida=d.vida-a.ataque+d.defensa
+function curar(personaje){
+  personaje.vida= personaje.vida + personaje.ataque/2
 }
 
 
@@ -24,29 +24,33 @@ function defender(a,d){
 
 mapAccciones={
   atacaP:function(){
-    atacar(personaje,monstruo);
+    atacar(host,monstruo);
   },
   atacaM:function(){
-    atacar(monstruo,personaje)
+    atacar(monstruo,host)
+  },
+  curarH:function(){
+    curar(host)
+  },
+  curarM:function(){
+    curar(monstruo)
   }
 }
 
 
-acciones=["atacaP","atacaP","atacaM","atacaM","atacaP","atacaM"];
 
 function pintaEstado(ronda, accion){
   console.log(ronda, accion)
-  console.log("Personaje:",personaje)
+  console.log("host:",host)
   console.log("Monstruo:" ,monstruo)
   console.log("--------------------------------------------------------")
 
 }
 
-
-function ejecutarAcciones(){
+function ejecutarAcciones(accs){
   var i=0;
   pintaEstado(i,"Inicio")
-  acciones.forEach(function(accion){
+  accs.forEach(function(accion){
     mapAccciones[accion]();
     pintaEstado(++i,accion)
 
@@ -54,4 +58,5 @@ function ejecutarAcciones(){
 }
 
 
-ejecutarAcciones();
+acciones=["atacaP","atacaP","atacaM","curarM","atacaP","curarH"];
+ejecutarAcciones(acciones);
