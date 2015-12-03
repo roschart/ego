@@ -41,10 +41,18 @@ var StatComponent=React.createClass({
 		return (
 		<div className="row stat">
 			<div className="col-xs-12">
-				<span>
+				<p>
 					Vida:<strong>{this.props.data.player.live}</strong>
 					Vida:<strong>{this.props.data.monster.live}</strong>
-				</span>
+				</p>
+				<p>
+					aim:<strong>{this.props.data.player.aim}</strong>
+					aim:<strong>{this.props.data.monster.aim}</strong>
+				</p>
+				<p>
+					Evasion:<strong>{this.props.data.player.evasion}</strong>
+					Evasion:<strong>{this.props.data.monster.evasion}</strong>
+				</p>
 			</div>
 		</div>
 		);

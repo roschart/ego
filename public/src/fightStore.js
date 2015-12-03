@@ -7,10 +7,10 @@ var _player = {
 };
 var _monster = {
   live: 20,
-  aim: 5,
+  aim: 20,
   evasion: 5,
-  attack: 5,
-  defense: 5
+  attack: 2,
+  defense: 13
 };
 
 function attack(attacker, defender) {
@@ -22,12 +22,12 @@ function attack(attacker, defender) {
 
 function defend(attacker) {
   attacker.evasion += 10;
-  attacker.aim = attacker.aim>5 ? attacker.aim -5: 0;
+  attacker.aim = attacker.aim > 5 ? attacker.aim - 5 : 0;
 }
 
 function aim(attacker) {
   attacker.aim += 10;
-  attacker.evasion=attacker.evasion > 5 ? attacker.evasion -5 : 0;
+  attacker.evasion = attacker.evasion > 5 ? attacker.evasion - 5 : 0;
 }
 
 function isHit(attacker, defender) {
@@ -55,16 +55,17 @@ var FightStore = {
   },
   attack: function() {
     attack(_player, _monster);
-    if (this.onChange) {
-      this.onChange();
-    }
+    attack(_monster, _player);
+    this.onChange();
   },
   defend: function() {
     defend(_player);
+    attack(_monster, _player);
     this.onChange();
   },
   aim: function() {
     aim(_player);
+    attack(_monster, _player);
     this.onChange();
   }
 }
