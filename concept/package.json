@@ -1,0 +1,14 @@
+{
+  "name": "concept",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ego.js",
+  "scripts": {
+    "server": "http-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.8.5"
+  }
+}
