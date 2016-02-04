@@ -1,7 +1,7 @@
 var game = new Phaser.Game(600, 800, Phaser.AUTO, '', {preload: preload, create: create, update: update})
 var host = {
   BP: 10,
-  BPMax: 10,
+  BPMax: 20,
   SP: 5,
   SPMax: 10,
   MP: 5,
