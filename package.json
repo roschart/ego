@@ -18,7 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.23.1",
-    "grunt": "^0.4.5",
+    "grunt": "^1.5.3",
     "grunt-cli": "^1.4.3",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-express": "^1.4.1",
